@@ -1,0 +1,268 @@
+{
+  "id": "07",
+  "slug": "07-dairy-duplicate",
+  "document": "07-dairy-duplicate.pdf",
+  "model": "claude-opus-5-5",
+  "via": "subscription",
+  "date": "2026-11-14",
+  "seconds": 14.5,
+  "outcome": {
+    "status": "exception",
+    "flags": [
+      {
+        "code": "DUPLICATE",
+        "detail": "DAI-5521 was already paid",
+        "amount": null,
+        "quantity": null
+      }
+    ],
+    "approver": "clerk",
+    "controller_only": false,
+    "account": "5100",
+    "explanation": "This invoice is a duplicate, so don't pay it. Dairy Supplier's DAI-5521 for $462.00 (110 gallons of whole milk at $4.20) was already paid as bill #30, dated 2026-10-14 against PO-1018. This one is just a \"2nd notice\" re-send of the same invoice, and the vendor and bank account (ending 2002) match what we have on file. Mark it as a duplicate. You may want to tell the vendor it was already paid so they stop sending reminders, and I can draft that email if you'd like.",
+    "email_draft": null,
+    "proposal": {
+      "lines": [
+        {
+          "account": "5100",
+          "debit": "462.00",
+          "credit": "0.00"
+        },
+        {
+          "account": "2000",
+          "debit": "0.00",
+          "credit": "462.00"
+        }
+      ]
+    },
+    "source_checks": {
+      "number": "ok",
+      "date": "ok",
+      "total": "ok",
+      "vendor_tax_id": "ok",
+      "remit_account_last4": "ok"
+    },
+    "extraction": {
+      "kind": "invoice",
+      "vendor_name": "Dairy Supplier",
+      "vendor_tax_id": "00-0000002",
+      "number": "DAI-5521",
+      "date": "2026-11-12",
+      "po": null,
+      "refers_to": null,
+      "remit_bank": "Example Bank",
+      "remit_account_last4": "2002",
+      "lines": [
+        {
+          "description": "Whole milk, gallon",
+          "quantity": "110",
+          "unit_price": "4.20",
+          "amount": "462.00",
+          "po_line": null
+        }
+      ],
+      "subtotal": "462.00",
+      "tax": "0.00",
+      "total": "462.00",
+      "notes": [
+        "Marked '2nd notice' with original invoice date 2026-10-14: this is a re-send of an earlier invoice. Check whether DAI-5521 was already paid or entered to avoid duplicate payment."
+      ],
+      "sources": {
+        "vendor_name": "Dairy Supplier",
+        "vendor_tax_id": "Tax id 00-0000002",
+        "number": "INVOICE DAI-5521",
+        "date": "Date: 2026-11-12",
+        "remit_bank": "Remit to: Example Bank, account ending 2002",
+        "remit_account_last4": "Remit to: Example Bank, account ending 2002",
+        "lines": "Whole milk, gallon 110 $4.20 $462.00",
+        "subtotal": "Subtotal $462.00",
+        "tax": "Tax $0.00",
+        "total": "Total due $462.00",
+        "notes": "2nd notice\nOriginal invoice date: 2026-10-14"
+      }
+    }
+  },
+  "expected": {
+    "status": "exception",
+    "flags": [
+      {
+        "code": "DUPLICATE"
+      }
+    ],
+    "approver": "clerk",
+    "account": "5100"
+  },
+  "match": {
+    "status": true,
+    "flags": true,
+    "approver": true,
+    "account": true,
+    "all": true
+  },
+  "metrics": {
+    "model_calls": 3,
+    "input_tokens": 6,
+    "output_tokens": 1251,
+    "cost_usd": 0.0683352
+  },
+  "model_usage": [
+    {
+      "step": "read",
+      "model": "claude-opus-5-5",
+      "input_tokens": 2,
+      "output_tokens": 690,
+      "cache_creation_input_tokens": 2625,
+      "cache_read_input_tokens": 1280,
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 2625,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "via": "subscription",
+      "side_calls": [
+        {
+          "model": "claude-haiku-5-5",
+          "input_tokens": 1171,
+          "output_tokens": 16
+        }
+      ]
+    },
+    {
+      "step": "investigate",
+      "model": "claude-opus-5-5",
+      "input_tokens": 2,
+      "output_tokens": 146,
+      "cache_creation_input_tokens": 1219,
+      "cache_read_input_tokens": 1288,
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 1219,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "via": "subscription",
+      "side_calls": [
+        {
+          "model": "claude-haiku-5-5",
+          "input_tokens": 1505,
+          "output_tokens": 32
+        }
+      ]
+    },
+    {
+      "step": "investigate",
+      "model": "claude-opus-5-5",
+      "input_tokens": 2,
+      "output_tokens": 415,
+      "cache_creation_input_tokens": 1471,
+      "cache_read_input_tokens": 1288,
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 1471,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "via": "subscription",
+      "side_calls": [
+        {
+          "model": "claude-haiku-5-5",
+          "input_tokens": 1756,
+          "output_tokens": 237
+        }
+      ]
+    }
+  ],
+  "replies": [
+    {
+      "task": "read",
+      "reply": {
+        "stop_reason": "end_turn",
+        "text": "{\"vendor_name\": \"Dairy Supplier\", \"vendor_tax_id\": \"00-0000002\", \"number\": \"DAI-5521\", \"date\": \"2026-11-12\", \"kind\": \"invoice\", \"remit_bank\": \"Example Bank\", \"remit_account_last4\": \"2002\", \"lines\": [{\"description\": \"Whole milk, gallon\", \"quantity\": \"110\", \"unit_price\": \"4.20\", \"amount\": \"462.00\"}], \"subtotal\": \"462.00\", \"tax\": \"0.00\", \"total\": \"462.00\", \"notes\": [\"Marked '2nd notice' with original invoice date 2026-10-14: this is a re-send of an earlier invoice. Check whether DAI-5521 was already paid or entered to avoid duplicate payment.\"], \"sources\": {\"vendor_name\": \"Dairy Supplier\", \"vendor_tax_id\": \"Tax id 00-0000002\", \"number\": \"INVOICE DAI-5521\", \"date\": \"Date: 2026-11-12\", \"remit_bank\": \"Remit to: Example Bank, account ending 2002\", \"remit_account_last4\": \"Remit to: Example Bank, account ending 2002\", \"lines\": \"Whole milk, gallon 110 $4.20 $462.00\", \"subtotal\": \"Subtotal $462.00\", \"tax\": \"Tax $0.00\", \"total\": \"Total due $462.00\", \"notes\": \"2nd notice\\nOriginal invoice date: 2026-10-14\"}}",
+        "tool_calls": [],
+        "usage": {
+          "input_tokens": 2,
+          "output_tokens": 690,
+          "cache_creation_input_tokens": 2625,
+          "cache_read_input_tokens": 1280,
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 2625,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "via": "subscription",
+          "side_calls": [
+            {
+              "model": "claude-haiku-5-5",
+              "input_tokens": 1171,
+              "output_tokens": 16
+            }
+          ]
+        },
+        "model": "claude-opus-5-5"
+      }
+    },
+    {
+      "task": "investigate",
+      "reply": {
+        "stop_reason": "tool_use",
+        "text": "",
+        "tool_calls": [
+          {
+            "id": "call_0edef22d_0",
+            "name": "get_bills",
+            "input": {
+              "number": "DAI-5521"
+            }
+          },
+          {
+            "id": "call_0edef22d_1",
+            "name": "get_vendor",
+            "input": {
+              "tax_id": "00-0000002"
+            }
+          }
+        ],
+        "usage": {
+          "input_tokens": 2,
+          "output_tokens": 146,
+          "cache_creation_input_tokens": 1219,
+          "cache_read_input_tokens": 1288,
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 1219,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "via": "subscription",
+          "side_calls": [
+            {
+              "model": "claude-haiku-5-5",
+              "input_tokens": 1505,
+              "output_tokens": 32
+            }
+          ]
+        },
+        "model": "claude-opus-5-5"
+      }
+    },
+    {
+      "task": "investigate",
+      "reply": {
+        "stop_reason": "end_turn",
+        "text": "This invoice is a duplicate, so don't pay it. Dairy Supplier's DAI-5521 for $462.00 (110 gallons of whole milk at $4.20) was already paid as bill #30, dated 2026-10-14 against PO-1018. This one is just a \"2nd notice\" re-send of the same invoice, and the vendor and bank account (ending 2002) match what we have on file. Mark it as a duplicate. You may want to tell the vendor it was already paid so they stop sending reminders, and I can draft that email if you'd like.",
+        "tool_calls": [],
+        "usage": {
+          "input_tokens": 2,
+          "output_tokens": 415,
+          "cache_creation_input_tokens": 1471,
+          "cache_read_input_tokens": 1288,
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 1471,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "via": "subscription",
+          "side_calls": [
+            {
+              "model": "claude-haiku-5-5",
+              "input_tokens": 1756,
+              "output_tokens": 237
+            }
+          ]
+        },
+        "model": "claude-opus-5-5"
+      }
+    }
+  ]
+}

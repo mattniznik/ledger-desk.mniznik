@@ -1,0 +1,97 @@
+{
+  "date": "2026-11-14",
+  "model": "claude-opus-5-5",
+  "via": "subscription",
+  "total": 13,
+  "matched": 13,
+  "errors": 0,
+  "seconds": 207.82,
+  "metrics": {
+    "model_calls": 40,
+    "input_tokens": 80,
+    "cache_write_tokens": 80859,
+    "cache_read_tokens": 47624,
+    "output_tokens": 16545,
+    "cost_usd": 0.9876168
+  },
+  "invoices": {
+    "01": {
+      "match": true,
+      "status": "ready",
+      "seconds": 6.13,
+      "cost_usd": 0.045676
+    },
+    "02": {
+      "match": true,
+      "status": "ready",
+      "seconds": 6.37,
+      "cost_usd": 0.046874400000000004
+    },
+    "03": {
+      "match": true,
+      "status": "exception",
+      "seconds": 18.76,
+      "cost_usd": 0.0990776
+    },
+    "04": {
+      "match": true,
+      "status": "exception",
+      "seconds": 19.67,
+      "cost_usd": 0.0960632
+    },
+    "05": {
+      "match": true,
+      "status": "ready",
+      "seconds": 6.19,
+      "cost_usd": 0.0347864
+    },
+    "06": {
+      "match": true,
+      "status": "exception",
+      "seconds": 23.33,
+      "cost_usd": 0.09563519999999999
+    },
+    "07": {
+      "match": true,
+      "status": "exception",
+      "seconds": 20.91,
+      "cost_usd": 0.0837552
+    },
+    "08": {
+      "match": true,
+      "status": "exception",
+      "seconds": 22.66,
+      "cost_usd": 0.1007192
+    },
+    "09": {
+      "match": true,
+      "status": "ready",
+      "seconds": 8.54,
+      "cost_usd": 0.044652000000000004
+    },
+    "10": {
+      "match": true,
+      "status": "exception",
+      "seconds": 27.41,
+      "cost_usd": 0.1431688
+    },
+    "11": {
+      "match": true,
+      "status": "exception",
+      "seconds": 24.28,
+      "cost_usd": 0.0821952
+    },
+    "12": {
+      "match": true,
+      "status": "exception",
+      "seconds": 17.42,
+      "cost_usd": 0.0801752
+    },
+    "13": {
+      "match": true,
+      "status": "ready",
+      "seconds": 6.15,
+      "cost_usd": 0.0348384
+    }
+  }
+}

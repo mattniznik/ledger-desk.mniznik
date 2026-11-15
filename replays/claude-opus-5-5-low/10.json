@@ -1,0 +1,423 @@
+{
+  "id": "10",
+  "slug": "10-utility-unusual",
+  "document": "10-utility-unusual.pdf",
+  "model": "claude-opus-5-5",
+  "via": "subscription",
+  "date": "2026-11-14",
+  "seconds": 25.35,
+  "outcome": {
+    "status": "exception",
+    "flags": [
+      {
+        "code": "UNUSUAL_AMOUNT",
+        "detail": "2950.00 against a 3-bill average of 1080.00",
+        "amount": "1870.00",
+        "quantity": null
+      }
+    ],
+    "approver": "clerk",
+    "controller_only": false,
+    "account": "6200",
+    "account_suggestion": {
+      "account": "6200",
+      "suggested": "6200",
+      "check": "ok",
+      "source": "suggested",
+      "reason": "The bill is for electricity at the roastery meter, which is a utility cost and matches the vendor's usual Utilities account."
+    },
+    "explanation": "Invoice UTL-4412 from Electric Utility is for 2,950.00, which is 1,870.00 above the 1,080.00 average of the last three bills. The previous six monthly bills were all between 1,002.00 and 1,110.00. The vendor, tax ID and bank account (Example Bank, ending 6006) match what we have on file, so the only problem is the amount. It comes from an estimated meter read, not an actual one.\n\nPlease hold the invoice and don't approve it yet. I've saved a draft email to the utility, not sent, asking for an actual meter reading and a corrected invoice, or an explanation of how they got 2,950.00. It's due in 20 days (around 2026-11-26), so review the draft and send it soon. If the roastery really did use more power this month, check with them too.",
+    "email_draft": {
+      "subject": "Invoice UTL-4412: estimated read is much higher than usual, please confirm",
+      "body": "Hello,\n\nWe received invoice UTL-4412 dated 2026-11-06 for 2,950.00 for electricity at our roastery meter. The invoice says this charge is based on an estimated meter read. Our last six bills for this meter were between 1,002.00 and 1,110.00, and the last three averaged 1,080.00. This invoice is 1,870.00 above that average.\n\nPlease could you:\n1. Take an actual meter reading, or confirm one we can send you, and issue a corrected invoice based on actual use.\n2. Explain how the estimate was calculated if you think 2,950.00 is correct.\n\nWe will hold this invoice until we hear back from you.\n\nThank you,\nAccounts Payable"
+    },
+    "proposal": {
+      "lines": [
+        {
+          "account": "6200",
+          "debit": "2950.00",
+          "credit": "0.00"
+        },
+        {
+          "account": "2000",
+          "debit": "0.00",
+          "credit": "2950.00"
+        }
+      ]
+    },
+    "source_checks": {
+      "number": "ok",
+      "date": "ok",
+      "total": "ok",
+      "vendor_tax_id": "ok",
+      "remit_account_last4": "ok"
+    },
+    "extraction": {
+      "kind": "invoice",
+      "vendor_name": "Electric Utility",
+      "vendor_tax_id": "00-0000006",
+      "number": "UTL-4412",
+      "date": "2026-11-06",
+      "po": null,
+      "refers_to": null,
+      "remit_bank": "Example Bank",
+      "remit_account_last4": "6006",
+      "lines": [
+        {
+          "description": "Electricity, roastery meter, estimated read",
+          "quantity": "1",
+          "unit_price": "2950.00",
+          "amount": "2950.00",
+          "po_line": null
+        }
+      ],
+      "subtotal": "2950.00",
+      "tax": "0.00",
+      "total": "2950.00",
+      "notes": [
+        "Line is an estimated meter read, not an actual read.",
+        "No PO referenced.",
+        "Due in 20 days."
+      ],
+      "sources": {
+        "vendor_name": "Electric Utility",
+        "vendor_tax_id": "Tax id 00-0000006",
+        "number": "No. UTL-4412",
+        "date": "Date: 2026-11-06",
+        "remit_bank": "Remit to: Example Bank, account ending 6006",
+        "remit_account_last4": "Remit to: Example Bank, account ending 6006",
+        "subtotal": "Subtotal $2,950.00",
+        "tax": "Tax $0.00",
+        "total": "Total due $2,950.00"
+      }
+    }
+  },
+  "expected": {
+    "status": "exception",
+    "flags": [
+      {
+        "code": "UNUSUAL_AMOUNT",
+        "amount": "1870.00"
+      }
+    ],
+    "approver": "clerk",
+    "account": "6200"
+  },
+  "match": {
+    "status": true,
+    "flags": true,
+    "approver": true,
+    "account": true,
+    "all": true
+  },
+  "metrics": {
+    "model_calls": 6,
+    "input_tokens": 12,
+    "output_tokens": 1892,
+    "cost_usd": 0.122032
+  },
+  "model_usage": [
+    {
+      "step": "read",
+      "model": "claude-opus-5-5",
+      "input_tokens": 2,
+      "output_tokens": 611,
+      "cache_creation_input_tokens": 2624,
+      "cache_read_input_tokens": 1280,
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 2624,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "via": "subscription",
+      "side_calls": [
+        {
+          "model": "claude-haiku-5-5",
+          "input_tokens": 1171,
+          "output_tokens": 14
+        }
+      ]
+    },
+    {
+      "step": "suggest_account",
+      "model": "claude-opus-5-5",
+      "input_tokens": 2,
+      "output_tokens": 112,
+      "cache_creation_input_tokens": 1141,
+      "cache_read_input_tokens": 608,
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 1141,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "via": "subscription",
+      "side_calls": [
+        {
+          "model": "claude-haiku-5-5",
+          "input_tokens": 1432,
+          "output_tokens": 197
+        }
+      ]
+    },
+    {
+      "step": "investigate",
+      "model": "claude-opus-5-5",
+      "input_tokens": 2,
+      "output_tokens": 149,
+      "cache_creation_input_tokens": 1212,
+      "cache_read_input_tokens": 1288,
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 1212,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "via": "subscription"
+    },
+    {
+      "step": "investigate",
+      "model": "claude-opus-5-5",
+      "input_tokens": 2,
+      "output_tokens": 153,
+      "cache_creation_input_tokens": 1397,
+      "cache_read_input_tokens": 1288,
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 1397,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "via": "subscription",
+      "side_calls": [
+        {
+          "model": "claude-haiku-5-5",
+          "input_tokens": 1686,
+          "output_tokens": 188
+        }
+      ]
+    },
+    {
+      "step": "investigate",
+      "model": "claude-opus-5-5",
+      "input_tokens": 2,
+      "output_tokens": 532,
+      "cache_creation_input_tokens": 1820,
+      "cache_read_input_tokens": 1288,
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 1820,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "via": "subscription",
+      "side_calls": [
+        {
+          "model": "claude-haiku-5-5",
+          "input_tokens": 2106,
+          "output_tokens": 179
+        }
+      ]
+    },
+    {
+      "step": "investigate",
+      "model": "claude-opus-5-5",
+      "input_tokens": 2,
+      "output_tokens": 335,
+      "cache_creation_input_tokens": 2148,
+      "cache_read_input_tokens": 1288,
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 2148,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "via": "subscription",
+      "side_calls": [
+        {
+          "model": "claude-haiku-5-5",
+          "input_tokens": 2436,
+          "output_tokens": 209
+        }
+      ]
+    }
+  ],
+  "replies": [
+    {
+      "task": "read",
+      "reply": {
+        "stop_reason": "end_turn",
+        "text": "{\"vendor_name\": \"Electric Utility\", \"vendor_tax_id\": \"00-0000006\", \"number\": \"UTL-4412\", \"date\": \"2026-11-06\", \"kind\": \"invoice\", \"remit_bank\": \"Example Bank\", \"remit_account_last4\": \"6006\", \"lines\": [{\"description\": \"Electricity, roastery meter, estimated read\", \"quantity\": \"1\", \"unit_price\": \"2950.00\", \"amount\": \"2950.00\"}], \"subtotal\": \"2950.00\", \"tax\": \"0.00\", \"total\": \"2950.00\", \"notes\": [\"Line is an estimated meter read, not an actual read.\", \"No PO referenced.\", \"Due in 20 days.\"], \"sources\": {\"vendor_name\": \"Electric Utility\", \"vendor_tax_id\": \"Tax id 00-0000006\", \"number\": \"No. UTL-4412\", \"date\": \"Date: 2026-11-06\", \"remit_bank\": \"Remit to: Example Bank, account ending 6006\", \"remit_account_last4\": \"Remit to: Example Bank, account ending 6006\", \"subtotal\": \"Subtotal $2,950.00\", \"tax\": \"Tax $0.00\", \"total\": \"Total due $2,950.00\"}}",
+        "tool_calls": [],
+        "usage": {
+          "input_tokens": 2,
+          "output_tokens": 611,
+          "cache_creation_input_tokens": 2624,
+          "cache_read_input_tokens": 1280,
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 2624,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "via": "subscription",
+          "side_calls": [
+            {
+              "model": "claude-haiku-5-5",
+              "input_tokens": 1171,
+              "output_tokens": 14
+            }
+          ]
+        },
+        "model": "claude-opus-5-5"
+      }
+    },
+    {
+      "task": "suggest_account",
+      "reply": {
+        "stop_reason": "end_turn",
+        "text": "{\"account\": \"6200\", \"reason\": \"The bill is for electricity at the roastery meter, which is a utility cost and matches the vendor's usual Utilities account.\"}",
+        "tool_calls": [],
+        "usage": {
+          "input_tokens": 2,
+          "output_tokens": 112,
+          "cache_creation_input_tokens": 1141,
+          "cache_read_input_tokens": 608,
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 1141,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "via": "subscription",
+          "side_calls": [
+            {
+              "model": "claude-haiku-5-5",
+              "input_tokens": 1432,
+              "output_tokens": 197
+            }
+          ]
+        },
+        "model": "claude-opus-5-5"
+      }
+    },
+    {
+      "task": "investigate",
+      "reply": {
+        "stop_reason": "tool_use",
+        "text": "",
+        "tool_calls": [
+          {
+            "id": "call_4f8cd369_0",
+            "name": "get_vendor",
+            "input": {
+              "tax_id": "00-0000006"
+            }
+          },
+          {
+            "id": "call_4f8cd369_1",
+            "name": "get_bills",
+            "input": {
+              "vendor_id": "00-0000006"
+            }
+          }
+        ],
+        "usage": {
+          "input_tokens": 2,
+          "output_tokens": 149,
+          "cache_creation_input_tokens": 1212,
+          "cache_read_input_tokens": 1288,
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 1212,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "via": "subscription"
+        },
+        "model": "claude-opus-5-5"
+      }
+    },
+    {
+      "task": "investigate",
+      "reply": {
+        "stop_reason": "tool_use",
+        "text": "",
+        "tool_calls": [
+          {
+            "id": "call_49c6ac5c_0",
+            "name": "get_bills",
+            "input": {
+              "vendor_id": "V06"
+            }
+          }
+        ],
+        "usage": {
+          "input_tokens": 2,
+          "output_tokens": 153,
+          "cache_creation_input_tokens": 1397,
+          "cache_read_input_tokens": 1288,
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 1397,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "via": "subscription",
+          "side_calls": [
+            {
+              "model": "claude-haiku-5-5",
+              "input_tokens": 1686,
+              "output_tokens": 188
+            }
+          ]
+        },
+        "model": "claude-opus-5-5"
+      }
+    },
+    {
+      "task": "investigate",
+      "reply": {
+        "stop_reason": "tool_use",
+        "text": "",
+        "tool_calls": [
+          {
+            "id": "call_854187c0_0",
+            "name": "draft_vendor_email",
+            "input": {
+              "subject": "Invoice UTL-4412: estimated read is much higher than usual, please confirm",
+              "body": "Hello,\n\nWe received invoice UTL-4412 dated 2026-11-06 for 2,950.00 for electricity at our roastery meter. The invoice says this charge is based on an estimated meter read. Our last six bills for this meter were between 1,002.00 and 1,110.00, and the last three averaged 1,080.00. This invoice is 1,870.00 above that average.\n\nPlease could you:\n1. Take an actual meter reading, or confirm one we can send you, and issue a corrected invoice based on actual use.\n2. Explain how the estimate was calculated if you think 2,950.00 is correct.\n\nWe will hold this invoice until we hear back from you.\n\nThank you,\nAccounts Payable"
+            }
+          }
+        ],
+        "usage": {
+          "input_tokens": 2,
+          "output_tokens": 532,
+          "cache_creation_input_tokens": 1820,
+          "cache_read_input_tokens": 1288,
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 1820,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "via": "subscription",
+          "side_calls": [
+            {
+              "model": "claude-haiku-5-5",
+              "input_tokens": 2106,
+              "output_tokens": 179
+            }
+          ]
+        },
+        "model": "claude-opus-5-5"
+      }
+    },
+    {
+      "task": "investigate",
+      "reply": {
+        "stop_reason": "end_turn",
+        "text": "Invoice UTL-4412 from Electric Utility is for 2,950.00, which is 1,870.00 above the 1,080.00 average of the last three bills. The previous six monthly bills were all between 1,002.00 and 1,110.00. The vendor, tax ID and bank account (Example Bank, ending 6006) match what we have on file, so the only problem is the amount. It comes from an estimated meter read, not an actual one.\n\nPlease hold the invoice and don't approve it yet. I've saved a draft email to the utility, not sent, asking for an actual meter reading and a corrected invoice, or an explanation of how they got 2,950.00. It's due in 20 days (around 2026-11-26), so review the draft and send it soon. If the roastery really did use more power this month, check with them too.",
+        "tool_calls": [],
+        "usage": {
+          "input_tokens": 2,
+          "output_tokens": 335,
+          "cache_creation_input_tokens": 2148,
+          "cache_read_input_tokens": 1288,
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 2148,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "via": "subscription",
+          "side_calls": [
+            {
+              "model": "claude-haiku-5-5",
+              "input_tokens": 2436,
+              "output_tokens": 209
+            }
+          ]
+        },
+        "model": "claude-opus-5-5"
+      }
+    }
+  ]
+}

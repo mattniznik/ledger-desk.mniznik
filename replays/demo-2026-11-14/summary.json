@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-14",
+  "model": "claude-opus-5-5",
+  "via": "subscription",
+  "total": 4,
+  "matched": 4,
+  "errors": 0,
+  "seconds": 71.26,
+  "metrics": {
+    "model_calls": 16,
+    "input_tokens": 32,
+    "output_tokens": 5373,
+    "cost_usd": 0.3547518
+  },
+  "invoices": {
+    "09": {
+      "match": true,
+      "status": "ready",
+      "seconds": 9.05,
+      "cost_usd": 0.052377400000000005
+    },
+    "08": {
+      "match": true,
+      "status": "exception",
+      "seconds": 23.57,
+      "cost_usd": 0.0989746
+    },
+    "10": {
+      "match": true,
+      "status": "exception",
+      "seconds": 22.32,
+      "cost_usd": 0.1297666
+    },
+    "12": {
+      "match": true,
+      "status": "exception",
+      "seconds": 16.32,
+      "cost_usd": 0.07363320000000001
+    }
+  }
+}

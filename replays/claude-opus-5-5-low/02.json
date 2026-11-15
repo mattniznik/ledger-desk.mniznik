@@ -1,0 +1,259 @@
+{
+  "id": "02",
+  "slug": "02-green-coffee-photo-partial",
+  "document": "02-green-coffee-photo-partial.jpg",
+  "model": "claude-opus-5-5",
+  "via": "subscription",
+  "date": "2026-11-14",
+  "seconds": 15.01,
+  "outcome": {
+    "status": "exception",
+    "flags": [
+      {
+        "code": "PO_NOT_FOUND",
+        "detail": "PO-1107 has no line None",
+        "amount": null,
+        "quantity": null
+      }
+    ],
+    "approver": "clerk",
+    "controller_only": false,
+    "account": "1200",
+    "explanation": "The PO_NOT_FOUND flag looks like a false alarm. PO-1107 exists, but the invoice line didn't say which PO line it was for. The invoice clearly matches PO line 1 (green coffee, 60 kg bag, $310.00 each). The PO is for 20 bags, we received 10 on 2026-11-06, and the invoice bills 10 \u00d7 $310.00 = $3,100.00. The vendor's bank account on file (Example Bank, ending 1001) also matches the invoice.\n\nWhat to do: link invoice line 1 to PO-1107 line 1 and send it through the normal review. The other 10 bags (another $3,100.00) are still open on the PO. You don't need to contact the vendor. I didn't check past paid bills for a duplicate of GCI-2302, so it's worth a quick look before payment.",
+    "email_draft": null,
+    "proposal": {
+      "lines": [
+        {
+          "account": "1200",
+          "debit": "3100.00",
+          "credit": "0.00"
+        },
+        {
+          "account": "2000",
+          "debit": "0.00",
+          "credit": "3100.00"
+        }
+      ]
+    },
+    "source_checks": {
+      "number": "not_checked",
+      "date": "not_checked",
+      "total": "not_checked",
+      "vendor_tax_id": "not_checked",
+      "po": "not_checked",
+      "remit_account_last4": "not_checked"
+    },
+    "extraction": {
+      "kind": "invoice",
+      "vendor_name": "Green Coffee Importer",
+      "vendor_tax_id": "00-0000001",
+      "number": "GCI-2302",
+      "date": "2026-11-10",
+      "po": "PO-1107",
+      "refers_to": null,
+      "remit_bank": "Example Bank",
+      "remit_account_last4": "1001",
+      "lines": [
+        {
+          "description": "Green coffee, 60 kg bag",
+          "quantity": "10",
+          "unit_price": "310.00",
+          "amount": "3100.00",
+          "po_line": null
+        }
+      ],
+      "subtotal": "3100.00",
+      "tax": "0.00",
+      "total": "3100.00",
+      "notes": [
+        "Partial shipment: 10 of 20 bags. Balance to follow.",
+        "Terms: Net 30"
+      ],
+      "sources": {
+        "vendor_name": "Green Coffee Importer",
+        "vendor_tax_id": "Tax id 00-0000001",
+        "number": "INVOICE GCI-2302",
+        "date": "Date 2026-11-10",
+        "po": "Purchase order PO-1107",
+        "remit_bank": "Remit to Example Bank, account ending 1001",
+        "remit_account_last4": "Remit to Example Bank, account ending 1001",
+        "lines": "Green coffee, 60 kg bag  10 x $310.00 = $3,100.00",
+        "subtotal": "Subtotal $3,100.00",
+        "tax": "Tax $0.00",
+        "total": "TOTAL $3,100.00"
+      }
+    }
+  },
+  "expected": {
+    "status": "ready",
+    "flags": [],
+    "approver": "clerk",
+    "account": "1200"
+  },
+  "match": {
+    "status": false,
+    "flags": false,
+    "approver": true,
+    "account": true,
+    "all": false
+  },
+  "metrics": {
+    "model_calls": 3,
+    "input_tokens": 6,
+    "output_tokens": 1292,
+    "cost_usd": 0.0814912
+  },
+  "model_usage": [
+    {
+      "step": "read",
+      "model": "claude-opus-5-5",
+      "input_tokens": 2,
+      "output_tokens": 688,
+      "cache_creation_input_tokens": 4099,
+      "cache_read_input_tokens": 1280,
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 4099,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "via": "subscription",
+      "side_calls": [
+        {
+          "model": "claude-haiku-5-5",
+          "input_tokens": 1171,
+          "output_tokens": 14
+        }
+      ]
+    },
+    {
+      "step": "investigate",
+      "model": "claude-opus-5-5",
+      "input_tokens": 2,
+      "output_tokens": 160,
+      "cache_creation_input_tokens": 1201,
+      "cache_read_input_tokens": 1288,
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 1201,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "via": "subscription"
+    },
+    {
+      "step": "investigate",
+      "model": "claude-opus-5-5",
+      "input_tokens": 2,
+      "output_tokens": 444,
+      "cache_creation_input_tokens": 1557,
+      "cache_read_input_tokens": 1288,
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 1557,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "via": "subscription",
+      "side_calls": [
+        {
+          "model": "claude-haiku-5-5",
+          "input_tokens": 1843,
+          "output_tokens": 257
+        }
+      ]
+    }
+  ],
+  "replies": [
+    {
+      "task": "read",
+      "reply": {
+        "stop_reason": "end_turn",
+        "text": "{\"vendor_name\": \"Green Coffee Importer\", \"vendor_tax_id\": \"00-0000001\", \"number\": \"GCI-2302\", \"date\": \"2026-11-10\", \"po\": \"PO-1107\", \"kind\": \"invoice\", \"remit_bank\": \"Example Bank\", \"remit_account_last4\": \"1001\", \"lines\": [{\"description\": \"Green coffee, 60 kg bag\", \"quantity\": \"10\", \"unit_price\": \"310.00\", \"amount\": \"3100.00\"}], \"subtotal\": \"3100.00\", \"tax\": \"0.00\", \"total\": \"3100.00\", \"notes\": [\"Partial shipment: 10 of 20 bags. Balance to follow.\", \"Terms: Net 30\"], \"sources\": {\"vendor_name\": \"Green Coffee Importer\", \"vendor_tax_id\": \"Tax id 00-0000001\", \"number\": \"INVOICE GCI-2302\", \"date\": \"Date 2026-11-10\", \"po\": \"Purchase order PO-1107\", \"remit_bank\": \"Remit to Example Bank, account ending 1001\", \"remit_account_last4\": \"Remit to Example Bank, account ending 1001\", \"lines\": \"Green coffee, 60 kg bag  10 x $310.00 = $3,100.00\", \"subtotal\": \"Subtotal $3,100.00\", \"tax\": \"Tax $0.00\", \"total\": \"TOTAL $3,100.00\"}}",
+        "tool_calls": [],
+        "usage": {
+          "input_tokens": 2,
+          "output_tokens": 688,
+          "cache_creation_input_tokens": 4099,
+          "cache_read_input_tokens": 1280,
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 4099,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "via": "subscription",
+          "side_calls": [
+            {
+              "model": "claude-haiku-5-5",
+              "input_tokens": 1171,
+              "output_tokens": 14
+            }
+          ]
+        },
+        "model": "claude-opus-5-5"
+      }
+    },
+    {
+      "task": "investigate",
+      "reply": {
+        "stop_reason": "tool_use",
+        "text": "",
+        "tool_calls": [
+          {
+            "id": "call_67e203bb_0",
+            "name": "get_purchase_order",
+            "input": {
+              "po": "PO-1107"
+            }
+          },
+          {
+            "id": "call_67e203bb_1",
+            "name": "get_receipts",
+            "input": {
+              "po": "PO-1107"
+            }
+          },
+          {
+            "id": "call_67e203bb_2",
+            "name": "get_vendor",
+            "input": {
+              "tax_id": "00-0000001"
+            }
+          }
+        ],
+        "usage": {
+          "input_tokens": 2,
+          "output_tokens": 160,
+          "cache_creation_input_tokens": 1201,
+          "cache_read_input_tokens": 1288,
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 1201,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "via": "subscription"
+        },
+        "model": "claude-opus-5-5"
+      }
+    },
+    {
+      "task": "investigate",
+      "reply": {
+        "stop_reason": "end_turn",
+        "text": "The PO_NOT_FOUND flag looks like a false alarm. PO-1107 exists, but the invoice line didn't say which PO line it was for. The invoice clearly matches PO line 1 (green coffee, 60 kg bag, $310.00 each). The PO is for 20 bags, we received 10 on 2026-11-06, and the invoice bills 10 \u00d7 $310.00 = $3,100.00. The vendor's bank account on file (Example Bank, ending 1001) also matches the invoice.\n\nWhat to do: link invoice line 1 to PO-1107 line 1 and send it through the normal review. The other 10 bags (another $3,100.00) are still open on the PO. You don't need to contact the vendor. I didn't check past paid bills for a duplicate of GCI-2302, so it's worth a quick look before payment.",
+        "tool_calls": [],
+        "usage": {
+          "input_tokens": 2,
+          "output_tokens": 444,
+          "cache_creation_input_tokens": 1557,
+          "cache_read_input_tokens": 1288,
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 1557,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "via": "subscription",
+          "side_calls": [
+            {
+              "model": "claude-haiku-5-5",
+              "input_tokens": 1843,
+              "output_tokens": 257
+            }
+          ]
+        },
+        "model": "claude-opus-5-5"
+      }
+    }
+  ]
+}

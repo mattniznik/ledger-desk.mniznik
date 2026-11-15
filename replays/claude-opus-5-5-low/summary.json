@@ -1,0 +1,95 @@
+{
+  "date": "2026-11-14",
+  "model": "claude-opus-5-5",
+  "via": "subscription",
+  "total": 13,
+  "matched": 7,
+  "errors": 0,
+  "seconds": 193.26,
+  "metrics": {
+    "model_calls": 39,
+    "input_tokens": 80,
+    "output_tokens": 17081,
+    "cost_usd": 0.9299312
+  },
+  "invoices": {
+    "01": {
+      "match": false,
+      "status": "exception",
+      "seconds": 12.93,
+      "cost_usd": 0.062039
+    },
+    "02": {
+      "match": false,
+      "status": "exception",
+      "seconds": 15.01,
+      "cost_usd": 0.0814912
+    },
+    "03": {
+      "match": false,
+      "status": "manual_entry",
+      "seconds": 10.42,
+      "cost_usd": 0.0538994
+    },
+    "04": {
+      "match": false,
+      "status": "manual_entry",
+      "seconds": 7.11,
+      "cost_usd": 0.037668
+    },
+    "05": {
+      "match": true,
+      "status": "ready",
+      "seconds": 6.13,
+      "cost_usd": 0.035648
+    },
+    "06": {
+      "match": false,
+      "status": "exception",
+      "seconds": 21.18,
+      "cost_usd": 0.0970288
+    },
+    "07": {
+      "match": true,
+      "status": "exception",
+      "seconds": 14.5,
+      "cost_usd": 0.0683352
+    },
+    "08": {
+      "match": true,
+      "status": "exception",
+      "seconds": 21.11,
+      "cost_usd": 0.0937752
+    },
+    "09": {
+      "match": true,
+      "status": "ready",
+      "seconds": 8.1,
+      "cost_usd": 0.0447896
+    },
+    "10": {
+      "match": true,
+      "status": "exception",
+      "seconds": 25.35,
+      "cost_usd": 0.122032
+    },
+    "11": {
+      "match": true,
+      "status": "exception",
+      "seconds": 19.85,
+      "cost_usd": 0.0846808
+    },
+    "12": {
+      "match": true,
+      "status": "exception",
+      "seconds": 16.71,
+      "cost_usd": 0.0771168
+    },
+    "13": {
+      "match": false,
+      "status": "exception",
+      "seconds": 14.86,
+      "cost_usd": 0.0714272
+    }
+  }
+}

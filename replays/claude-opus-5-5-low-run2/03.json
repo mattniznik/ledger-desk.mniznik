@@ -1,0 +1,337 @@
+{
+  "id": "03",
+  "slug": "03-packaging-price-variance",
+  "document": "03-packaging-price-variance.pdf",
+  "model": "claude-opus-5-5",
+  "via": "subscription",
+  "date": "2026-11-14",
+  "seconds": 18.76,
+  "outcome": {
+    "status": "exception",
+    "flags": [
+      {
+        "code": "PRICE_VARIANCE",
+        "detail": "billed above PO-1124 prices by more than 2%",
+        "amount": "200.00",
+        "quantity": null
+      }
+    ],
+    "approver": "clerk",
+    "controller_only": false,
+    "account": "1210",
+    "explanation": "Invoice PKG-20817 from Packaging Supplier bills 5,000 hot cups (12 oz) at $0.42 each, which comes to $2,100.00. PO-1124 set the price at $0.38 each, so the PO total is $1,900.00 and the invoice is $200.00 too high (about 10.5% over). All 5,000 cups were received on 2026-11-06, and the bank account on the invoice (Example Bank, ending 3003) matches the one on file, so the price is the only problem. Hold the invoice and ask the vendor for a corrected invoice or a $200.00 credit memo. A draft email asking for this is saved for you to review and send; it hasn't been sent.",
+    "email_draft": {
+      "subject": "Invoice PKG-20817 / PO-1124 \u2013 unit price discrepancy",
+      "body": "Hello,\n\nWe received your invoice PKG-20817 dated 2026-11-07 for 5,000 hot cups, 12 oz, against PO-1124. The invoice bills $0.42 per unit, for a total of $2,100.00. The PO price is $0.38 per unit, for a total of $1,900.00. That is a difference of $200.00.\n\nPlease send a corrected invoice or a credit memo for $200.00 so the invoice matches the PO price. If the price has changed, please send the supporting agreement.\n\nThank you,\nAccounts Payable"
+    },
+    "proposal": {
+      "lines": [
+        {
+          "account": "1210",
+          "debit": "2100.00",
+          "credit": "0.00"
+        },
+        {
+          "account": "2000",
+          "debit": "0.00",
+          "credit": "2100.00"
+        }
+      ]
+    },
+    "source_checks": {
+      "number": "ok",
+      "date": "ok",
+      "total": "ok",
+      "vendor_tax_id": "ok",
+      "po": "ok",
+      "remit_account_last4": "ok"
+    },
+    "extraction": {
+      "kind": "invoice",
+      "vendor_name": "Packaging Supplier",
+      "vendor_tax_id": "00-0000003",
+      "number": "PKG-20817",
+      "date": "2026-11-07",
+      "po": "PO-1124",
+      "refers_to": null,
+      "remit_bank": "Example Bank",
+      "remit_account_last4": "3003",
+      "lines": [
+        {
+          "description": "Hot cup, 12 oz",
+          "quantity": "5000",
+          "unit_price": "0.42",
+          "amount": "2100.00",
+          "po_line": null
+        }
+      ],
+      "subtotal": "2100.00",
+      "tax": "0.00",
+      "total": "2100.00",
+      "notes": [
+        "Terms: Net 30"
+      ],
+      "sources": {
+        "vendor_name": "Packaging Supplier",
+        "vendor_tax_id": "Tax id 00-0000003",
+        "number": "No. PKG-20817",
+        "date": "Date: 2026-11-07",
+        "po": "Purchase order: PO-1124",
+        "remit_bank": "Remit to: Example Bank, account ending 3003",
+        "remit_account_last4": "Remit to: Example Bank, account ending 3003",
+        "subtotal": "Subtotal $2,100.00",
+        "tax": "Tax $0.00",
+        "total": "Total due $2,100.00"
+      }
+    }
+  },
+  "expected": {
+    "status": "exception",
+    "flags": [
+      {
+        "code": "PRICE_VARIANCE",
+        "amount": "200.00"
+      }
+    ],
+    "approver": "clerk",
+    "account": "1210"
+  },
+  "match": {
+    "status": true,
+    "flags": true,
+    "approver": true,
+    "account": true,
+    "all": true
+  },
+  "metrics": {
+    "model_calls": 4,
+    "input_tokens": 8,
+    "cache_write_tokens": 8461,
+    "cache_read_tokens": 4088,
+    "output_tokens": 1527,
+    "cost_usd": 0.0990776
+  },
+  "model_usage": [
+    {
+      "step": "read",
+      "model": "claude-opus-5-5",
+      "input_tokens": 2,
+      "output_tokens": 624,
+      "cache_creation_input_tokens": 2641,
+      "cache_read_input_tokens": 1512,
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 2641,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "via": "subscription",
+      "side_calls": [
+        {
+          "model": "claude-haiku-5-5",
+          "input_tokens": 1171,
+          "output_tokens": 14
+        }
+      ]
+    },
+    {
+      "step": "investigate",
+      "model": "claude-opus-5-5",
+      "input_tokens": 2,
+      "output_tokens": 160,
+      "cache_creation_input_tokens": 2469,
+      "cache_read_input_tokens": 0,
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 2469,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "via": "subscription",
+      "side_calls": [
+        {
+          "model": "claude-haiku-5-5",
+          "input_tokens": 1470,
+          "output_tokens": 186
+        }
+      ]
+    },
+    {
+      "step": "investigate",
+      "model": "claude-opus-5-5",
+      "input_tokens": 2,
+      "output_tokens": 439,
+      "cache_creation_input_tokens": 1535,
+      "cache_read_input_tokens": 1288,
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 1535,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "via": "subscription",
+      "side_calls": [
+        {
+          "model": "claude-haiku-5-5",
+          "input_tokens": 1822,
+          "output_tokens": 251
+        }
+      ]
+    },
+    {
+      "step": "investigate",
+      "model": "claude-opus-5-5",
+      "input_tokens": 2,
+      "output_tokens": 304,
+      "cache_creation_input_tokens": 1816,
+      "cache_read_input_tokens": 1288,
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 1816,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "via": "subscription",
+      "side_calls": [
+        {
+          "model": "claude-haiku-5-5",
+          "input_tokens": 2102,
+          "output_tokens": 209
+        }
+      ]
+    }
+  ],
+  "replies": [
+    {
+      "task": "read",
+      "reply": {
+        "stop_reason": "end_turn",
+        "text": "{\"vendor_name\": \"Packaging Supplier\", \"vendor_tax_id\": \"00-0000003\", \"number\": \"PKG-20817\", \"date\": \"2026-11-07\", \"po\": \"PO-1124\", \"kind\": \"invoice\", \"remit_bank\": \"Example Bank\", \"remit_account_last4\": \"3003\", \"lines\": [{\"description\": \"Hot cup, 12 oz\", \"quantity\": \"5000\", \"unit_price\": \"0.42\", \"amount\": \"2100.00\"}], \"subtotal\": \"2100.00\", \"tax\": \"0.00\", \"total\": \"2100.00\", \"notes\": [\"Terms: Net 30\"], \"sources\": {\"vendor_name\": \"Packaging Supplier\", \"vendor_tax_id\": \"Tax id 00-0000003\", \"number\": \"No. PKG-20817\", \"date\": \"Date: 2026-11-07\", \"po\": \"Purchase order: PO-1124\", \"remit_bank\": \"Remit to: Example Bank, account ending 3003\", \"remit_account_last4\": \"Remit to: Example Bank, account ending 3003\", \"subtotal\": \"Subtotal $2,100.00\", \"tax\": \"Tax $0.00\", \"total\": \"Total due $2,100.00\"}}",
+        "tool_calls": [],
+        "usage": {
+          "input_tokens": 2,
+          "output_tokens": 624,
+          "cache_creation_input_tokens": 2641,
+          "cache_read_input_tokens": 1512,
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 2641,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "via": "subscription",
+          "side_calls": [
+            {
+              "model": "claude-haiku-5-5",
+              "input_tokens": 1171,
+              "output_tokens": 14
+            }
+          ]
+        },
+        "model": "claude-opus-5-5"
+      }
+    },
+    {
+      "task": "investigate",
+      "reply": {
+        "stop_reason": "tool_use",
+        "text": "",
+        "tool_calls": [
+          {
+            "id": "call_7de484f8_0",
+            "name": "get_purchase_order",
+            "input": {
+              "po": "PO-1124"
+            }
+          },
+          {
+            "id": "call_7de484f8_1",
+            "name": "get_receipts",
+            "input": {
+              "po": "PO-1124"
+            }
+          },
+          {
+            "id": "call_7de484f8_2",
+            "name": "get_vendor",
+            "input": {
+              "tax_id": "00-0000003"
+            }
+          }
+        ],
+        "usage": {
+          "input_tokens": 2,
+          "output_tokens": 160,
+          "cache_creation_input_tokens": 2469,
+          "cache_read_input_tokens": 0,
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 2469,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "via": "subscription",
+          "side_calls": [
+            {
+              "model": "claude-haiku-5-5",
+              "input_tokens": 1470,
+              "output_tokens": 186
+            }
+          ]
+        },
+        "model": "claude-opus-5-5"
+      }
+    },
+    {
+      "task": "investigate",
+      "reply": {
+        "stop_reason": "tool_use",
+        "text": "",
+        "tool_calls": [
+          {
+            "id": "call_b7dc6e46_0",
+            "name": "draft_vendor_email",
+            "input": {
+              "subject": "Invoice PKG-20817 / PO-1124 \u2013 unit price discrepancy",
+              "body": "Hello,\n\nWe received your invoice PKG-20817 dated 2026-11-07 for 5,000 hot cups, 12 oz, against PO-1124. The invoice bills $0.42 per unit, for a total of $2,100.00. The PO price is $0.38 per unit, for a total of $1,900.00. That is a difference of $200.00.\n\nPlease send a corrected invoice or a credit memo for $200.00 so the invoice matches the PO price. If the price has changed, please send the supporting agreement.\n\nThank you,\nAccounts Payable"
+            }
+          }
+        ],
+        "usage": {
+          "input_tokens": 2,
+          "output_tokens": 439,
+          "cache_creation_input_tokens": 1535,
+          "cache_read_input_tokens": 1288,
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 1535,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "via": "subscription",
+          "side_calls": [
+            {
+              "model": "claude-haiku-5-5",
+              "input_tokens": 1822,
+              "output_tokens": 251
+            }
+          ]
+        },
+        "model": "claude-opus-5-5"
+      }
+    },
+    {
+      "task": "investigate",
+      "reply": {
+        "stop_reason": "end_turn",
+        "text": "Invoice PKG-20817 from Packaging Supplier bills 5,000 hot cups (12 oz) at $0.42 each, which comes to $2,100.00. PO-1124 set the price at $0.38 each, so the PO total is $1,900.00 and the invoice is $200.00 too high (about 10.5% over). All 5,000 cups were received on 2026-11-06, and the bank account on the invoice (Example Bank, ending 3003) matches the one on file, so the price is the only problem. Hold the invoice and ask the vendor for a corrected invoice or a $200.00 credit memo. A draft email asking for this is saved for you to review and send; it hasn't been sent.",
+        "tool_calls": [],
+        "usage": {
+          "input_tokens": 2,
+          "output_tokens": 304,
+          "cache_creation_input_tokens": 1816,
+          "cache_read_input_tokens": 1288,
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 1816,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "via": "subscription",
+          "side_calls": [
+            {
+              "model": "claude-haiku-5-5",
+              "input_tokens": 2102,
+              "output_tokens": 209
+            }
+          ]
+        },
+        "model": "claude-opus-5-5"
+      }
+    }
+  ]
+}
