@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="robots" content="noindex" />
+    <title>Coffee Roastery - ledger desk demo</title>
+    <meta name="description" content="The accounts-payable desk of a fictional coffee roastery. Claude reads each supplier bill, code checks it against the purchase order, the delivery and the books, and a person approves before anything is paid." />
+    <!-- the Studio's typefaces come from Google Fonts (studio/theme.ts) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <style>
+      /* hidden until main.tsx has the visitor's layout styled and rendered; the class is set by the script below,
+         so without JavaScript the page shows the noscript text */
+      html.boot body { opacity: 0; }
+    </style>
+    <!-- paints the saved (or linked, or default) colour set's background before anything renders: vite.config.ts
+         puts studio/boot.ts's script here -->
+    <script>/*studio-boot*/</script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <main style="font: 16px/1.6 system-ui, sans-serif; max-width: 720px; margin: 48px auto; padding: 0 20px">
+        <h1>Coffee Roastery - ledger desk demo</h1>
+        <p>The accounts-payable desk of a fictional coffee roastery. Claude reads each supplier bill, code checks it against the purchase order, the delivery and the books, and a person approves before anything is paid. This page needs JavaScript.</p>
+        <p>A fictional company with invented data, for a demo. Not affiliated with or endorsed by Intuit; QuickBooks is a trademark of Intuit Inc.</p>
+      </main>
+    </noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

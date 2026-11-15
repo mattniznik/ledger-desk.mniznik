@@ -1,0 +1,7 @@
+/* The base every layout shares: box sizing, no body margin, and the page hidden until its layout has rendered
+   (html.boot, set by the boot script in index.html). Everything else is the layouts' (rich/, simple/), the
+   Studio's (studio/) and the desk's (desk.css), each scoped to its own classes. */
+html.boot body { opacity: 0; }
+body { margin: 0; transition: opacity .2s; }
+* { box-sizing: border-box; }
+button, input, textarea { font: inherit; }
