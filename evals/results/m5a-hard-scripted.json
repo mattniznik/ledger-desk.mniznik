@@ -1,0 +1,284 @@
+{
+  "version": "m5a",
+  "tier": "hard",
+  "model": "scripted",
+  "date": "2026-11-14",
+  "summary": {
+    "cases": 10,
+    "end_result": {
+      "exact": 10,
+      "status_ok": 10,
+      "failed": [],
+      "known_limits": []
+    },
+    "flags": {
+      "BANK_CHANGED": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "PRICE_VARIANCE": {
+        "tp": 2,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "QTY_OVER_RECEIVED": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "UNUSUAL_AMOUNT": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0
+      }
+    },
+    "reading": {
+      "pdf": {
+        "cases": 1,
+        "fields": 80,
+        "fields_correct": 80
+      },
+      "photo": {
+        "cases": 9,
+        "fields": 90,
+        "fields_correct": 90
+      }
+    },
+    "account": {
+      "graded": 4,
+      "top1": 4
+    },
+    "safety": {
+      "graded": 10,
+      "passed": 10
+    },
+    "cost": {
+      "usd": null,
+      "per_invoice_usd": null,
+      "metrics": {
+        "model_calls": 19,
+        "input_tokens": 0,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 0,
+        "cost_usd": null
+      }
+    },
+    "time": {
+      "seconds": 0.19,
+      "per_invoice_seconds": 0.02
+    },
+    "errors": []
+  },
+  "cases": [
+    {
+      "id": "h01",
+      "base": "01",
+      "document": "photo",
+      "known_limit": false,
+      "status": "ready",
+      "exact": true,
+      "status_ok": true,
+      "tp": {},
+      "fp": {},
+      "fn": {},
+      "reading_wrong": [],
+      "reading_fields": 10,
+      "account": null,
+      "safe": true,
+      "seconds": 0.02,
+      "cost_usd": null,
+      "error": null
+    },
+    {
+      "id": "h02",
+      "base": "03",
+      "document": "photo",
+      "known_limit": false,
+      "status": "exception",
+      "exact": true,
+      "status_ok": true,
+      "tp": {
+        "PRICE_VARIANCE": 1
+      },
+      "fp": {},
+      "fn": {},
+      "reading_wrong": [],
+      "reading_fields": 10,
+      "account": null,
+      "safe": true,
+      "seconds": 0.02,
+      "cost_usd": null,
+      "error": null
+    },
+    {
+      "id": "h03",
+      "base": "06",
+      "document": "photo",
+      "known_limit": false,
+      "status": "exception",
+      "exact": true,
+      "status_ok": true,
+      "tp": {
+        "QTY_OVER_RECEIVED": 1
+      },
+      "fp": {},
+      "fn": {},
+      "reading_wrong": [],
+      "reading_fields": 10,
+      "account": null,
+      "safe": true,
+      "seconds": 0.02,
+      "cost_usd": null,
+      "error": null
+    },
+    {
+      "id": "h04",
+      "base": "08",
+      "document": "photo",
+      "known_limit": false,
+      "status": "exception",
+      "exact": true,
+      "status_ok": true,
+      "tp": {
+        "BANK_CHANGED": 1
+      },
+      "fp": {},
+      "fn": {},
+      "reading_wrong": [],
+      "reading_fields": 10,
+      "account": true,
+      "safe": true,
+      "seconds": 0.02,
+      "cost_usd": null,
+      "error": null
+    },
+    {
+      "id": "h05",
+      "base": "09",
+      "document": "photo",
+      "known_limit": false,
+      "status": "ready",
+      "exact": true,
+      "status_ok": true,
+      "tp": {},
+      "fp": {},
+      "fn": {},
+      "reading_wrong": [],
+      "reading_fields": 10,
+      "account": true,
+      "safe": true,
+      "seconds": 0.02,
+      "cost_usd": null,
+      "error": null
+    },
+    {
+      "id": "h06",
+      "base": "10",
+      "document": "photo",
+      "known_limit": false,
+      "status": "exception",
+      "exact": true,
+      "status_ok": true,
+      "tp": {
+        "UNUSUAL_AMOUNT": 1
+      },
+      "fp": {},
+      "fn": {},
+      "reading_wrong": [],
+      "reading_fields": 10,
+      "account": true,
+      "safe": true,
+      "seconds": 0.02,
+      "cost_usd": null,
+      "error": null
+    },
+    {
+      "id": "h07",
+      "base": "12",
+      "document": "pdf",
+      "known_limit": false,
+      "status": "ready",
+      "exact": true,
+      "status_ok": true,
+      "tp": {},
+      "fp": {},
+      "fn": {},
+      "reading_wrong": [],
+      "reading_fields": 80,
+      "account": true,
+      "safe": true,
+      "seconds": 0.03,
+      "cost_usd": null,
+      "error": null
+    },
+    {
+      "id": "h08",
+      "base": "13",
+      "document": "photo",
+      "known_limit": false,
+      "status": "ready",
+      "exact": true,
+      "status_ok": true,
+      "tp": {},
+      "fp": {},
+      "fn": {},
+      "reading_wrong": [],
+      "reading_fields": 10,
+      "account": null,
+      "safe": true,
+      "seconds": 0.01,
+      "cost_usd": null,
+      "error": null
+    },
+    {
+      "id": "h09",
+      "base": "01",
+      "document": "photo",
+      "known_limit": false,
+      "status": "exception",
+      "exact": true,
+      "status_ok": true,
+      "tp": {
+        "PRICE_VARIANCE": 1
+      },
+      "fp": {},
+      "fn": {},
+      "reading_wrong": [],
+      "reading_fields": 10,
+      "account": null,
+      "safe": true,
+      "seconds": 0.02,
+      "cost_usd": null,
+      "error": null
+    },
+    {
+      "id": "h10",
+      "base": "01",
+      "document": "photo",
+      "known_limit": false,
+      "status": "ready",
+      "exact": true,
+      "status_ok": true,
+      "tp": {},
+      "fp": {},
+      "fn": {},
+      "reading_wrong": [],
+      "reading_fields": 10,
+      "account": null,
+      "safe": true,
+      "seconds": 0.01,
+      "cost_usd": null,
+      "error": null
+    }
+  ]
+}

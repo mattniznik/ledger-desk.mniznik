@@ -1,0 +1,70 @@
+# The hard tier. The standard 50 put Claude Opus 5.5 at its ceiling (504 of 504
+# fields read, 2026-11-14, n=1 run), so they cannot tell a cheaper model from it. These make the
+# reading harder; the answers are written by hand from the same policy as variants.yaml, and the
+# standard set stays unchanged so its results stay comparable.
+#
+# render: options for the photo renderer (angle in degrees, blur radius, noise 0-1, scale of the
+# final image, JPEG quality, shadow, crease, a handwritten-style note, a faint total).
+
+- id: h01
+  base: "01"
+  document: photo
+  render: {angle: 7, blur: 2.2, noise: 0.14, quality: 45}
+  what: "the clean green coffee invoice as a poor photo: 7 degrees of skew, heavy blur and noise, strong compression"
+  expected: same
+- id: h02
+  base: "03"
+  document: photo
+  render: {angle: -5, shadow: true, crease: true}
+  what: "the cup price variance as a photo with a shadow across half of it and a fold crease"
+  expected: same
+- id: h03
+  base: "06"
+  document: photo
+  render: {scale: 0.4, quality: 35}
+  what: "the dairy over-billing as a low-resolution photo, 40% of the size, heavy compression"
+  expected: same
+- id: h04
+  base: "08"
+  document: photo
+  render: {angle: 4, blur: 2.5}
+  what: "the bank change as a blurry photo: the account ending 9921 still has to be read right"
+  expected: same
+- id: h05
+  base: "09"
+  document: photo
+  render: {handwritten: "Meter checked 10/31, ok - R."}
+  what: "the normal utility bill as a photo with a handwritten-style note across it"
+  expected: same
+- id: h06
+  base: "10"
+  document: photo
+  render: {faint_total: true, blur: 1.2}
+  what: "the unusual utility bill as a photo with a faint, washed-out total"
+  expected: same
+- id: h07
+  base: "12"
+  what: "a two-page freight statement: 36 deliveries at different rates, $3,195.00 in all, no planted line"
+  replace_lines: {count: 36, description: "Freight, delivery {n} of 36", unit_price_start: "45.00", unit_price_step: "2.50"}
+  notes: ["Thank you for your business."]
+  expected: {status: ready, flags: [], approver: clerk, account: "6500"}
+- id: h08
+  base: "13"
+  document: photo
+  render: {angle: -6, blur: 1.8, scale: 0.5}
+  what: "the capital equipment invoice, with its tax line, as a skewed, blurry, half-size photo"
+  expected: same
+- id: h09
+  base: "01"
+  document: photo
+  render: {angle: 3, blur: 1.8}
+  lines: [{unit_price: "316.21"}]
+  what: "green coffee at $316.21 as a blurry photo: one cent over the 2% tolerance, so one misread digit flips the answer"
+  expected: {status: exception, flags: [{code: PRICE_VARIANCE, amount: "124.20"}], approver: controller, account: "1200"}
+- id: h10
+  base: "01"
+  document: photo
+  render: {angle: 3, blur: 1.8}
+  lines: [{unit_price: "316.20"}]
+  what: "green coffee at $316.20 as a blurry photo: exactly at the 2% tolerance, so inside it"
+  expected: {status: ready, flags: [], approver: controller, account: "1200"}
