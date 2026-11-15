@@ -1,0 +1,23 @@
+id: "04"
+document: pdf
+what_is_wrong: the lines add up to $665.00 but the printed subtotal and total say $755.00 ($90.00 more)
+invoice:
+  vendor_name: Packaging Supplier
+  vendor_tax_id: 00-0000003
+  number: PKG-20822
+  date: 2026-11-08
+  po: PO-1126
+  remit_to: {bank: Example Bank, account_last4: "3003"}
+  lines:
+    - {description: "Hot cup lid, 12 oz", po_line: 1, quantity: 2000, unit_price: "0.12", amount: "240.00"}
+    - {description: "Retail coffee bag, 340 g", po_line: 2, quantity: 500, unit_price: "0.85", amount: "425.00"}
+  subtotal: "755.00"
+  tax: "0.00"
+  total: "755.00"
+  notes: ["Terms: Net 30"]
+expected:
+  status: exception
+  flags:
+    - {code: TOTALS_MISMATCH, amount: "90.00"}
+  approver: clerk
+  account: "1210"

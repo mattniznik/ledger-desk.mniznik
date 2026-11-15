@@ -1,0 +1,21 @@
+id: "09"
+document: pdf
+what_is_wrong: nothing; $1,140.00 against a trailing 3-month average of $1,080.00 (+5.6%)
+invoice:
+  vendor_name: Electric Utility
+  vendor_tax_id: 00-0000006
+  number: UTL-4411
+  date: 2026-11-05
+  po: null
+  remit_to: {bank: Example Bank, account_last4: "6006"}
+  lines:
+    - {description: "Electricity, roastery and cafes, October 2026", quantity: 1, unit_price: "1140.00", amount: "1140.00"}
+  subtotal: "1140.00"
+  tax: "0.00"
+  total: "1140.00"
+  notes: ["Due in 20 days"]
+expected:
+  status: ready
+  flags: []
+  approver: clerk
+  account: "6200"

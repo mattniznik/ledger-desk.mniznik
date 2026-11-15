@@ -1,0 +1,21 @@
+id: "13"
+document: pdf
+what_is_wrong: nothing; a $12,400.00 drum replacement coded to Equipment on its PO, so it is capitalized and goes to the controller
+invoice:
+  vendor_name: Roasting Equipment Supplier
+  vendor_tax_id: 00-0000004
+  number: EQP-5502
+  date: 2026-11-12
+  po: PO-1101
+  remit_to: {bank: Example Bank, account_last4: "4004"}
+  lines:
+    - {description: "Roaster drum replacement", po_line: 1, quantity: 1, unit_price: "12400.00", amount: "12400.00"}
+  subtotal: "12400.00"
+  tax: "1023.00"
+  total: "13423.00"
+  notes: ["Sales tax 8.25%", "Terms: Net 30"]
+expected:
+  status: ready
+  flags: []
+  approver: controller
+  account: "1500"

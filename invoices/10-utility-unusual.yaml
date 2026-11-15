@@ -1,0 +1,22 @@
+id: "10"
+document: pdf
+what_is_wrong: $2,950.00 against a trailing 3-month average of $1,080.00 (2.7 times)
+invoice:
+  vendor_name: Electric Utility
+  vendor_tax_id: 00-0000006
+  number: UTL-4412
+  date: 2026-11-06
+  po: null
+  remit_to: {bank: Example Bank, account_last4: "6006"}
+  lines:
+    - {description: "Electricity, roastery meter, estimated read", quantity: 1, unit_price: "2950.00", amount: "2950.00"}
+  subtotal: "2950.00"
+  tax: "0.00"
+  total: "2950.00"
+  notes: ["Due in 20 days"]
+expected:
+  status: exception
+  flags:
+    - {code: UNUSUAL_AMOUNT, amount: "1870.00"}
+  approver: clerk
+  account: "6200"

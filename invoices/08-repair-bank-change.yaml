@@ -1,0 +1,23 @@
+id: "08"
+document: pdf
+what_is_wrong: the remit-to account differs from the vendor master (a common payment-fraud pattern)
+invoice:
+  vendor_name: Espresso Repair Service
+  vendor_tax_id: 00-0000005
+  number: REP-3307
+  date: 2026-11-10
+  po: null
+  remit_to: {bank: Example Bank, account_last4: "9921"}
+  lines:
+    - {description: "Group head rebuild, labor and parts", quantity: 1, unit_price: "860.00", amount: "860.00"}
+  subtotal: "860.00"
+  tax: "0.00"
+  total: "860.00"
+  notes: ["Please update our bank details for this and future payments.", "Due on receipt"]
+expected:
+  status: exception
+  flags:
+    - {code: BANK_CHANGED}
+  approver: controller
+  controller_only: true
+  account: "6300"

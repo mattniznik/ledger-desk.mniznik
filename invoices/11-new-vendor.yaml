@@ -1,0 +1,21 @@
+id: "11"
+document: pdf
+what_is_wrong: the vendor is not in the vendor master yet
+invoice:
+  vendor_name: POS Software Vendor
+  vendor_tax_id: 00-0000008
+  number: POS-77120
+  date: 2026-11-03
+  po: null
+  remit_to: {bank: Example Bank, account_last4: "8008"}
+  lines:
+    - {description: "Point-of-sale software, monthly subscription, 3 terminals", quantity: 1, unit_price: "189.00", amount: "189.00"}
+  subtotal: "189.00"
+  tax: "0.00"
+  total: "189.00"
+  notes: ["Billed monthly"]
+expected:
+  status: exception
+  flags:
+    - {code: VENDOR_NOT_FOUND}
+  approver: clerk

@@ -1,0 +1,17 @@
+Every company, vendor, bank, tax id, invoice, purchase order and amount in this
+repository is invented for the demo. The coffee roastery and its vendors are
+generated from a fixed seed in src/ledger_desk/company.py; the tax ids start
+with 00, a prefix the IRS does not issue (inferred, not checked against an IRS
+list). The sample invoices in invoices/ and the eval cases in evals/ were
+written for the demo, and the replies in replays/ are recorded runs of Claude
+on those invoices.
+
+The industry figures the page quotes belong to their publishers and are quoted
+with a link to each: Ardent Partners, "The State of ePayables 2025"; the
+Association for Financial Professionals, "2025 Payments Fraud and Control
+Survey"; and the FBI Internet Crime Complaint Center's 2024 report, as quoted
+by Nacha.
+
+QuickBooks is a trademark of Intuit Inc. The demo can copy approved bills to an
+Intuit developer sandbox company; it is not affiliated with or endorsed by
+Intuit.

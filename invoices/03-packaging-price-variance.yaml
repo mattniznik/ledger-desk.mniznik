@@ -1,0 +1,22 @@
+id: "03"
+document: pdf
+what_is_wrong: cups billed at $0.42 against a PO price of $0.38 (+10.5%, over the 2% tolerance)
+invoice:
+  vendor_name: Packaging Supplier
+  vendor_tax_id: 00-0000003
+  number: PKG-20817
+  date: 2026-11-07
+  po: PO-1124
+  remit_to: {bank: Example Bank, account_last4: "3003"}
+  lines:
+    - {description: "Hot cup, 12 oz", po_line: 1, quantity: 5000, unit_price: "0.42", amount: "2100.00"}
+  subtotal: "2100.00"
+  tax: "0.00"
+  total: "2100.00"
+  notes: ["Terms: Net 30"]
+expected:
+  status: exception
+  flags:
+    - {code: PRICE_VARIANCE, amount: "200.00"}
+  approver: clerk
+  account: "1210"

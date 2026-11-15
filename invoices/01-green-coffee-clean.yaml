@@ -1,0 +1,21 @@
+id: "01"
+document: pdf
+what_is_wrong: nothing; a clean three-way match
+invoice:
+  vendor_name: Green Coffee Importer
+  vendor_tax_id: 00-0000001
+  number: GCI-2301
+  date: 2026-11-09
+  po: PO-1093
+  remit_to: {bank: Example Bank, account_last4: "1001"}
+  lines:
+    - {description: "Green coffee, 60 kg bag", po_line: 1, quantity: 20, unit_price: "310.00", amount: "6200.00"}
+  subtotal: "6200.00"
+  tax: "0.00"
+  total: "6200.00"
+  notes: ["Terms: Net 30"]
+expected:
+  status: ready
+  flags: []
+  approver: controller
+  account: "1200"

@@ -1,0 +1,21 @@
+id: "02"
+document: photo
+what_is_wrong: nothing; a phone photo of a paper invoice for a partial shipment (10 of 20 bags)
+invoice:
+  vendor_name: Green Coffee Importer
+  vendor_tax_id: 00-0000001
+  number: GCI-2302
+  date: 2026-11-10
+  po: PO-1107
+  remit_to: {bank: Example Bank, account_last4: "1001"}
+  lines:
+    - {description: "Green coffee, 60 kg bag", po_line: 1, quantity: 10, unit_price: "310.00", amount: "3100.00"}
+  subtotal: "3100.00"
+  tax: "0.00"
+  total: "3100.00"
+  notes: ["Partial shipment: 10 of 20 bags. Balance to follow.", "Terms: Net 30"]
+expected:
+  status: ready
+  flags: []
+  approver: clerk
+  account: "1200"

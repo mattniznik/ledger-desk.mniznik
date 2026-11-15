@@ -1,0 +1,19 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# A deployed demo's Anthropic key lives here, as LEDGER_DESK_ANTHROPIC_KEY and never
+# ANTHROPIC_API_KEY: that name would outrank a Claude Code login on this machine.
+.env
+.env.local
+.env.local.tmp
+
+# Rendered documents are rebuilt from invoices/*.yaml by `ledger-desk render`.
+out/
+
+# The page's build and the browser tests' reports.
+web/dist/
+web/node_modules/
+web/test-results/
+web/playwright-report/

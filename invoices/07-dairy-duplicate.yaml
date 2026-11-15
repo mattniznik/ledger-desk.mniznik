@@ -1,0 +1,22 @@
+id: "07"
+document: pdf
+what_is_wrong: invoice DAI-5521 was already paid in October; this copy is stamped "2nd notice"
+invoice:
+  vendor_name: Dairy Supplier
+  vendor_tax_id: 00-0000002
+  number: DAI-5521
+  date: 2026-11-12
+  po: null
+  remit_to: {bank: Example Bank, account_last4: "2002"}
+  lines:
+    - {description: "Whole milk, gallon", quantity: 110, unit_price: "4.20", amount: "462.00"}
+  subtotal: "462.00"
+  tax: "0.00"
+  total: "462.00"
+  notes: ["2nd notice", "Original invoice date: 2026-10-14"]
+expected:
+  status: exception
+  flags:
+    - {code: DUPLICATE}
+  approver: clerk
+  account: "5100"
