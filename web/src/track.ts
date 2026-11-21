@@ -23,7 +23,7 @@ import type { Choice } from './studio/choice.ts'
 
 const HOST = 'ledger-desk.mniznik.com'
 const EVENTS_URL = 'https://events.mniznik.com/api/event'
-const CLARITY = '' // the Clarity project id; empty: no Clarity
+const CLARITY = 'zh3fb5ng9s' // the Clarity project id; empty: no Clarity
 const OFF = 'ledger-desk-no-track', SRC = 'ledger-desk-src', VID = 'ledger-desk-vid'
 
 /** What a link out points at ("github", "linkedin", "rag", "recall", or the host); "" for this page. */
