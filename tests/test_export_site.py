@@ -170,7 +170,9 @@ def test_each_recorded_run_carries_the_tokens_of_each_model_call():
 def test_the_layouts_come_from_the_studio_presets():
     layouts = export_site.layouts(ROOT / "web" / "src" / "studio" / "presets.ts")
     assert [l["id"] for l in layouts] == ["01", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14"]
-    assert layouts[0]["name"] == "Bills up front" and layouts[0]["default"] is True
+    assert layouts[0]["name"] == "Bills up front"
+    # the default since 2026-11-21 (layout 01 until then)
+    assert [(l["id"], l["name"]) for l in layouts if l["default"]] == [("06", "Editorial")]
     assert sum(l["default"] for l in layouts) == 1
 
 
@@ -200,7 +202,8 @@ def test_the_results_block_reads_the_numbers_from_the_data():
 def test_the_studio_counts_and_the_default_look_come_from_the_presets():
     k = export_site.studio(ROOT / "web" / "src" / "studio" / "presets.ts")
     assert (k["palettes"], k["fonts"]) == (21, 15)
-    assert (k["palette"], k["font"]) == ("Golden hour on paper", "Barlow Condensed caps + DM Sans")
+    # the default look since 2026-11-21 (Golden hour on paper with Barlow Condensed caps + DM Sans until then)
+    assert (k["palette"], k["font"]) == ("Trace lilac", "Instrument Serif + DM Sans")
 
 
 VITEST_FILE_FAILED = " Test Files  1 failed | 11 passed (12)\n      Tests  117 passed (117)\n"
@@ -251,3 +254,19 @@ def test_the_readme_intro_names_the_live_site_and_where_it_runs():
     for service in ("Azure Container Apps", "Azure Database for PostgreSQL", "Azure Key Vault", "Azure Static Web Apps", "Terraform"):
         assert service in intro, service
     assert "Not deployed" not in intro
+
+
+def test_the_readme_picture_of_the_default_is_described_as_that_layout():
+    # The alt text was written for layout 01 and kept when the default became 06 (2026-11-21): it described cards
+    # that are not in the picture. It now comes from the default layout's own Studio description.
+    lays = export_site.layouts(ROOT / "web" / "src" / "studio" / "presets.ts")
+    data = {
+        "evals": export_site.eval_runs(ROOT / "evals" / "results"),
+        "recorded": export_site.recorded_runs(ROOT / "replays" / "claude-opus-5-5-low-run2"),
+        "tests": {"python": {"passed": 1}, "web": {"passed": 1}},
+        "model": {"name": "Claude Opus 5.5"},
+    }
+    intro = export_site.readme_blocks(data, lays)["intro"]
+    default = next(l for l in lays if l["default"])
+    assert f'alt="Layout {default["id"]}, {default["name"]}, at 1280 pixels: {default["short"]}"' in intro
+    assert f'src="docs/img/layouts/{default["id"]}-web.jpg"' in intro

@@ -121,21 +121,24 @@ test.describe('the Studio', () => {
     await expect(opener).toBeFocused()
   })
 
+  // Picks Bills up front (01), a layout other than the default: since 2026-11-21 the default is Editorial (06), and
+  // clicking the layout already on screen keeps the look on screen instead of bringing the layout's own.
   test('a pick is saved and the page reloads into it; Back to the default clears it', async ({ page }) => {
     await page.goto('/')
     await ready(page)
+    await expect(page.locator('.hero-editorial')).toBeVisible()
     await page.locator('.sp-btn').first().click()
     const panel = page.getByRole('dialog', { name: 'Studio' })
-    await Promise.all([page.waitForEvent('load'), panel.getByRole('button', { name: /^Editorial/ }).click()])
+    await Promise.all([page.waitForEvent('load'), panel.getByRole('button', { name: /^Bills up front/ }).click()])
     await ready(page)
-    expect(JSON.parse((await saved(page)) ?? 'null')).toMatchObject({ option: '06', palette: 'coverPaper', font: 'serif' })
-    await expect(page.locator('.hero-editorial')).toBeVisible()
+    expect(JSON.parse((await saved(page)) ?? 'null')).toMatchObject({ option: '01', palette: 'coverDark', font: 'grotesk' })
+    await expect(page.locator('.hero-search')).toBeVisible()
     // the Studio opens again after its own reload, so the visitor sees the pick and can keep going
     await expect(page.getByRole('dialog', { name: 'Studio' })).toBeVisible()
     await Promise.all([page.waitForEvent('load'), page.getByRole('dialog', { name: 'Studio' }).getByRole('button', { name: 'Back to the default' }).click()])
     await ready(page)
     expect(await saved(page)).toBeNull()
-    await expect(page.locator('.hero-search')).toBeVisible()
+    await expect(page.locator('.hero-editorial')).toBeVisible()
   })
 
   test('a map-first layout can be picked too', async ({ page }) => {

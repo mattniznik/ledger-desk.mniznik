@@ -16,13 +16,13 @@ on Azure Container Apps, the database on Azure Database for PostgreSQL, the secr
 Azure Static Web Apps, all set up with Terraform ([Where it runs](#where-it-runs-microsoft-azure)).
 
 The demo replays 13 recorded real runs of Claude Opus 5.5 through today's code, so it costs
-nothing per visit; 13 of 13 end as their answer key says. 392 Python tests and
-127 page tests pass, and browser tests check every layout at 1280 x 800 and 390 x 844.
+nothing per visit; 13 of 13 end as their answer key says. 393 Python tests and
+133 page tests pass, and browser tests check every layout at 1280 x 800 and 390 x 844.
 
-**A customizable page.** 12 layouts, 21 colour sets and 15 typefaces, with the same bills and numbers in all of them; the default is layout 01, Bills up front. See
+**A customizable page.** 12 layouts, 21 colour sets and 15 typefaces, with the same bills and numbers in all of them; the default is layout 06, Editorial. See
 [Design](#design-the-layouts-on-the-web-and-on-a-phone).
 
-<img alt="Layout 01, Bills up front, at 1280 pixels: the bill desk with the walkthrough button, the cards for bills ready, bills that need a look and money caught" src="docs/img/layouts/01-web.jpg" width="640">
+<img alt="Layout 06, Editorial, at 1280 pixels: Paper and serif: a bill sent twice, the paid bill as a footnote, one run stepped through in a player." src="docs/img/layouts/06-web.jpg" width="640">
 <!-- /generated:intro -->
 
 ## Why build it this way
@@ -179,7 +179,7 @@ The bills replay recorded Claude runs through today's code, so nothing calls a m
 ## Design: the layouts, on the web and on a phone
 
 <!-- generated:design -->
-The default is layout 01, Bills up front, in Golden hour on paper with Barlow Condensed caps + DM Sans.
+The default is layout 06, Editorial, in Trace lilac with Instrument Serif + DM Sans.
 Each pair is the page at 1280 x 800 and at 390 x 844, with reduced motion so the animations show their last frame.
 
 <table>
@@ -188,7 +188,7 @@ Each pair is the page at 1280 x 800 and at 390 x 844, with reduced motion so the
 <td><img alt="Layout 01, Bills up front, on the web" src="docs/img/layouts/01-web.jpg" width="640"></td>
 <td><img alt="Layout 01, Bills up front, on a phone" src="docs/img/layouts/01-phone.jpg" width="300"></td>
 </tr>
-<tr><td colspan="2"><b>01 Bills up front</b> (the default) - The bill desk up front with the walkthrough a click away, then a field of dots for every bill the eval read.</td></tr>
+<tr><td colspan="2"><b>01 Bills up front</b> - The bill desk up front with the walkthrough a click away, then a field of dots for every bill the eval read.</td></tr>
 <tr>
 <td><img alt="Layout 04, Under the hood, on the web" src="docs/img/layouts/04-web.jpg" width="640"></td>
 <td><img alt="Layout 04, Under the hood, on a phone" src="docs/img/layouts/04-phone.jpg" width="300"></td>
@@ -203,7 +203,7 @@ Each pair is the page at 1280 x 800 and at 390 x 844, with reduced motion so the
 <td><img alt="Layout 06, Editorial, on the web" src="docs/img/layouts/06-web.jpg" width="640"></td>
 <td><img alt="Layout 06, Editorial, on a phone" src="docs/img/layouts/06-phone.jpg" width="300"></td>
 </tr>
-<tr><td colspan="2"><b>06 Editorial</b> - Paper and serif: a bill sent twice, the paid bill as a footnote, one run stepped through in a player.</td></tr>
+<tr><td colspan="2"><b>06 Editorial</b> (the default) - Paper and serif: a bill sent twice, the paid bill as a footnote, one run stepped through in a player.</td></tr>
 <tr>
 <td><img alt="Layout 07, Simple: moving line, on the web" src="docs/img/layouts/07-web.jpg" width="640"></td>
 <td><img alt="Layout 07, Simple: moving line, on a phone" src="docs/img/layouts/07-phone.jpg" width="300"></td>

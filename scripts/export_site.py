@@ -310,8 +310,9 @@ def readme_blocks(data: dict, lays: list[dict], counts: dict | None = None) -> d
         + f", with the same bills and numbers in all of them; the default is layout {default['id']}, {default['name']}. See",
         "[Design](#design-the-layouts-on-the-web-and-on-a-phone).",
         "",
-        f'<img alt="Layout {default["id"]}, {default["name"]}, at 1280 pixels: the bill desk with the walkthrough button, the cards '
-        f'for bills ready, bills that need a look and money caught" src="docs/img/layouts/{default["id"]}-web.jpg" width="640">',
+        # the default layout's own Studio description, so the alt text follows the default (it described 01's cards)
+        f'<img alt="Layout {default["id"]}, {default["name"]}, at 1280 pixels: {default["short"]}" '
+        f'src="docs/img/layouts/{default["id"]}-web.jpg" width="640">',
     ])
     pairs = []
     for l in lays:

@@ -65,9 +65,9 @@ export const OPTIONS: Option[] = [
   { id: "14", name: "Status cards", short: "Friendly: each part of the workflow as a card with its status. Tap one to find it on the map.", cfg: { look: "garage", palette: "garage", font: "outfit" } },
 ];
 
-// What a first-time visitor sees: Golden hour on paper with Barlow Condensed caps, the sibling demos' default look, on
-// layout 01 until the owner picks a default from the twelve.
-export const DEFAULT = { option: "01", palette: "coverPaper", font: "condensed" };
+// What a first-time visitor sees: Editorial (06) on Trace lilac with Instrument Serif + DM Sans, picked by the owner
+// on 2026-11-21. Until then layout 01 on Golden hour on paper with Barlow Condensed caps, the sibling demos' default.
+export const DEFAULT = { option: "06", palette: "lilac", font: "serif" };
 
 export const PALETTES: Record<string, Palette> = {
   coverDark: { name: "Golden hour on black", bg: "#070708", card: "#141416", card2: "#1b1b1e", line: "#26262c", tx: "#f3f3f5", mu: "#9a9aa3", a1: "#f4a83a", a2: "#ec8050", a3: "#d55c82", acc: "#f4a83a", on: "#111111", mark: "rgba(244,168,58,.28)" },

@@ -77,10 +77,14 @@ describe('the Studio presets', () => {
     }
   })
 
-  it('fifteen font pairings; the default is golden hour on paper with Barlow Condensed caps on layout 01', () => {
+  it('fifteen font pairings; the default is Editorial on Trace lilac with Instrument Serif and DM Sans', () => {
     expect(Object.keys(FONTS)).toHaveLength(15)
-    // the owner picks the default from the twelve; 01 until then
-    expect(DEFAULT).toEqual({ option: '01', palette: 'coverPaper', font: 'condensed' })
+    // chosen by the owner on 2026-11-21: Editorial (06) on Trace lilac with Instrument Serif + DM Sans; until then
+    // layout 01 on Golden hour on paper with Barlow Condensed caps, the sibling demos' default look
+    expect(DEFAULT).toEqual({ option: '06', palette: 'lilac', font: 'serif' })
+    expect(PALETTES.lilac.name).toBe('Trace lilac')
+    expect(FONTS.serif.head).toMatch(/Instrument Serif/)
+    expect(FONTS.serif.body).toMatch(/DM Sans/)
     expect(FONTS.condensed.head).toMatch(/Barlow Condensed/)
     expect(FONTS.condensed.body).toMatch(/DM Sans/)
     expect(FONTS.condensed.caps).toBe(true)
@@ -97,8 +101,8 @@ describe('which look a visitor sees', () => {
 
   it('without a link the saved pick shows; without either, the default', () => {
     expect(resolve('', { option: '08', palette: 'lime', font: 'inter' })).toEqual({ option: '08', palette: 'lime', font: 'inter', source: 'saved' })
-    expect(resolve('')).toEqual({ option: '01', palette: 'coverPaper', font: 'condensed', source: 'default' })
-    expect(resolve('?layout=99')).toEqual({ option: '01', palette: 'coverPaper', font: 'condensed', source: 'default' })
+    expect(resolve('')).toEqual({ option: '06', palette: 'lilac', font: 'serif', source: 'default' })
+    expect(resolve('?layout=99')).toEqual({ option: '06', palette: 'lilac', font: 'serif', source: 'default' })
     expect(resolve('', { option: '99' }).source).toBe('default')
   })
 

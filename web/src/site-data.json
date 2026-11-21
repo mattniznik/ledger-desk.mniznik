@@ -1,17 +1,17 @@
 {
-  "generated": "2026-11-15",
+  "generated": "2026-11-21",
   "tests": {
     "python": {
-      "tests": 392,
-      "passed": 392,
+      "tests": 393,
+      "passed": 393,
       "failed": 0,
       "files": 35
     },
     "web": {
-      "tests": 127,
-      "passed": 127,
+      "tests": 133,
+      "passed": 133,
       "failed": 0,
-      "files": 19
+      "files": 20
     }
   },
   "evals": [
@@ -1672,7 +1672,7 @@
       {
         "title": "Write the test, watch it fail",
         "text": "Each change starts with a test, and it has to fail on the old code for the reason expected before the code is written.",
-        "fact": "519 tests in 54 files, Python and the page, all passing",
+        "fact": "526 tests in 55 files, Python and the page, all passing",
         "url": null
       },
       {
