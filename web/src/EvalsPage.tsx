@@ -46,7 +46,7 @@ export function EvalsPage({ client }: { client: Client }) {
                   <td className="num">{s.safety.passed} / {s.safety.graded}</td>
                   <td className="num">{s.cost.usd === null ? 'none' : `$${s.cost.usd.toFixed(2)}`}</td>
                   <td className="num">{s.time.per_invoice_seconds}</td>
-                  <td><button aria-label={`Open ${r.name}`} onClick={async () => setOpen(await client.evalRun(r.name))}>Open</button></td>
+                  <td><button aria-label={`Open ${r.name}`} data-eval={r.name} onClick={async () => setOpen(await client.evalRun(r.name))}>Open</button></td>
                 </tr>
               )
             })}

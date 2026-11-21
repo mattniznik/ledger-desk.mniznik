@@ -4,6 +4,7 @@ import { dueLabel, outcome, problemImpact, problemLabel } from './bills'
 import { BillTrace } from './BillTrace'
 import { MetricsFooter } from './MetricsFooter'
 import { publish } from './map-feed'
+import { trackDecision } from './track'
 import { eventsFromRun } from './system-map'
 
 type Props = { client: Client; runId: string; onBack: () => void }
@@ -42,14 +43,17 @@ export function InvoiceView({ client, runId, onBack }: Props) {
     return () => { if (url) URL.revokeObjectURL(url) }
   }, [client, runId])
 
-  async function decide(decision: Decision['decision'], why = reason) {
+  // via: the button pressed, the suggested step's or one of the three; the usage event says which and how it went
+  async function decide(decision: Decision['decision'], why = reason, via: Decision['decision'] | 'suggested' = decision) {
     setSending(true)
     setError('')
     try {
       // the phone box is part of an approval only: a hold or a reject never records a phone check
       setRun(await client.decide(runId, { role, decision, reason: why, phone_confirmed: decision === 'approve' ? phone : false }))
       setHeldNow(decision === 'hold') // a hold leaves the run waiting, so the page would otherwise look unchanged
+      trackDecision(via, undefined)
     } catch (e) {
+      trackDecision(via, e instanceof ApiError ? e.status : 0)
       setError(e instanceof ApiError ? `${e.status}: ${e.message}` : String(e))
     } finally {
       setSending(false)
@@ -108,7 +112,7 @@ export function InvoiceView({ client, runId, onBack }: Props) {
                 : <p>{run.next_step.then}</p>}
               {run.next_step.also.length > 0 && <p className="fine">Also: {run.next_step.also.join(' ')}</p>}
               {!(run.held || heldNow) && (
-                <button className="primary" disabled={sending} onClick={() => decide(run.next_step!.decision, run.next_step!.reason)}>
+                <button className="primary" disabled={sending} onClick={() => decide(run.next_step!.decision, run.next_step!.reason, 'suggested')}>
                   {run.next_step.action}
                 </button>
               )}
@@ -171,7 +175,7 @@ export function InvoiceView({ client, runId, onBack }: Props) {
               </fieldset>
               <label className="block">
                 Reason {pause.status === 'exception' ? '(required to approve with a flag open)' : '(optional)'}
-                <textarea value={reason} onChange={(ev) => setReason(ev.target.value)} rows={2} />
+                <textarea value={reason} onChange={(ev) => setReason(ev.target.value)} rows={2} data-clarity-mask="true" />
               </label>
               {pause.controller_only && (
                 <label className="block">

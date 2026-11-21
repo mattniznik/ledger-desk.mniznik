@@ -19,10 +19,10 @@ export function Walkthrough({ step, note, onStep, onExit, onRestart }: Props) {
       <p><strong>What code and people do:</strong> {s.app}</p>
       {note && <p className="fine" role="status">{note}</p>}
       <div className="buttons">
-        <button disabled={step === 0} onClick={() => onStep(step - 1)}>Back</button>
-        {last ? <button className="primary" onClick={onExit}>Finish</button> : <button className="primary" onClick={() => onStep(step + 1)}>Next</button>}
-        {!last && <button className="link" onClick={onExit}>Exit the walkthrough</button>}
-        <button className="link" onClick={onRestart}>Start over with fresh bills</button>
+        <button disabled={step === 0} data-tour="step" data-step={step} onClick={() => onStep(step - 1)}>Back</button>
+        {last ? <button className="primary" data-tour="finish" onClick={onExit}>Finish</button> : <button className="primary" data-tour="step" data-step={step + 2} onClick={() => onStep(step + 1)}>Next</button>}
+        {!last && <button className="link" data-tour="exit" onClick={onExit}>Exit the walkthrough</button>}
+        <button className="link" data-tour="restart" onClick={onRestart}>Start over with fresh bills</button>
       </div>
     </aside>
   )

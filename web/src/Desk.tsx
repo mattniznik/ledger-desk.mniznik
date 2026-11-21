@@ -64,12 +64,12 @@ export function Desk({ client: given }: { client?: Client } = {}) {
       <div className="desk-head">
         <p className="desk-brand">Coffee Roastery <span className="demo-badge">fictional company, demo data</span></p>
         <nav className="desk-tabs" aria-label="Desk">
-          <button className={tab === 'bills' ? 'active' : ''} aria-pressed={tab === 'bills'} onClick={() => show('bills')}>Bills</button>
-          <button className={tab === 'audit' ? 'active' : ''} aria-pressed={tab === 'audit'} onClick={() => show('audit')}>Audit trail</button>
-          <button className={tab === 'how' ? 'active' : ''} aria-pressed={tab === 'how'} onClick={() => show('how')}>How it works</button>
+          <button className={tab === 'bills' ? 'active' : ''} data-tab="bills" aria-pressed={tab === 'bills'} onClick={() => show('bills')}>Bills</button>
+          <button className={tab === 'audit' ? 'active' : ''} data-tab="audit" aria-pressed={tab === 'audit'} onClick={() => show('audit')}>Audit trail</button>
+          <button className={tab === 'how' ? 'active' : ''} data-tab="how" aria-pressed={tab === 'how'} onClick={() => show('how')}>How it works</button>
         </nav>
         {tour === null && (
-          <button className="primary tour-start" onClick={() => goTo(0)}>Walk through a morning in accounts payable ({TOUR.length} steps)</button>
+          <button className="primary tour-start" data-tour="start" onClick={() => goTo(0)}>Walk through a morning in accounts payable ({TOUR.length} steps)</button>
         )}
       </div>
       {tour !== null && <Walkthrough step={tour} note={tourNote} onStep={goTo} onExit={endTour} onRestart={restart} />}

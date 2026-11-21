@@ -30,8 +30,8 @@ export function AuditView({ client }: { client: Client }) {
     <section className="audit">
       <h2>Audit trail</h2>
       <div className="buttons">
-        <button onClick={verify}>Verify audit log</button>
-        <button className="secondary" onClick={tamper}>Edit a row behind the app's back</button>
+        <button data-audit="verify" onClick={verify}>Verify audit log</button>
+        <button className="secondary" data-audit="tamper" onClick={tamper}>Edit a row behind the app's back</button>
       </div>
       {result && (
         <p role="status" className={result.intact ? 'ok' : 'error'}>

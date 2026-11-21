@@ -12,6 +12,7 @@ import './shared/shared.css'
 import { DEFAULT, FONTS, PALETTES, PRESETS } from './studio/presets.ts'
 import { configFor, parseSaved, resolveChoice, STORAGE_KEY } from './studio/choice.ts'
 import { fontsHref, themeVars } from './studio/theme.ts'
+import { startTracking } from './track.ts'
 
 let saved = null
 try {
@@ -51,6 +52,7 @@ page
         <Page cfg={cfg} choice={choice} />
       </StrictMode>,
     )
+    startTracking(choice)
   })
   .catch((e) => {
     console.error(e)

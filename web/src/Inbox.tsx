@@ -84,7 +84,7 @@ export function Inbox({ client, onOpen }: Props) {
   const anyRun = bills[0]?.run
 
   const review = (b: Bill, label = 'Review') => (
-    <button aria-label={`${label} ${b.sample.number}`} disabled={reading !== null} onClick={() => onOpen(b.run.run_id)}>{label}</button>
+    <button aria-label={`${label} ${b.sample.number}`} data-bill={b.sample.number} disabled={reading !== null} onClick={() => onOpen(b.run.run_id)}>{label}</button>
   )
   const billCells = (b: Bill) => (
     <>

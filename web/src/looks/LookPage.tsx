@@ -54,7 +54,7 @@ const flaggedBy = (code: string) => RUNS.filter((r) => r.flags.some((f) => f.cod
 /* ---------------------------------------------------------------- shared frame */
 
 const TourButton = ({ className = 'btn' }: { className?: string }) => (
-  <button type="button" className={className} onClick={() => requestTour()}>
+  <button type="button" className={className} data-tour="map" onClick={() => requestTour()}>
     Take the tour
   </button>
 )
@@ -427,7 +427,7 @@ function Workshop({ choice }: PageProps) {
                   <span>out</span>
                   <b>{call.result}</b>
                 </div>
-                <button type="button" className="btn" onClick={() => playRun(call.run, 'sheet')}>
+                <button type="button" className="btn" data-ex={call.run.sample} onClick={() => playRun(call.run, 'sheet')}>
                   Play this run on the map
                 </button>
               </>
@@ -478,7 +478,7 @@ function CheckCatch() {
           {f.amount ? ` (${amount(f.amount)})` : ''}
         </b>
       </div>
-      <button type="button" className="btn" onClick={() => playRun(r, 'sheet')}>
+      <button type="button" className="btn" data-ex={r.sample} onClick={() => playRun(r, 'sheet')}>
         Play this run on the map
       </button>
     </>
@@ -708,7 +708,7 @@ function Garage({ choice }: PageProps) {
         <p className="lk-g-label">Recorded bills</p>
         <div className="lk-g-runs">
           {RUNS.map((r) => (
-            <button type="button" key={r.sample} className="lk-g-card lk-g-run" onClick={() => (playRun(r, 'card'), toMap())}>
+            <button type="button" key={r.sample} className="lk-g-card lk-g-run" data-ex={r.sample} onClick={() => (playRun(r, 'card'), toMap())}>
               <b>{runTitle(r)}</b>
               <span className={`lk-g-st${r.flags.length ? ' bad' : ''}`}>{runLine(r)}</span>
             </button>

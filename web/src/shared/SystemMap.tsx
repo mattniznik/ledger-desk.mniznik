@@ -424,7 +424,7 @@ export function SystemMap({ focus = null, onPick, compact = false, className = '
             </>
           ) : (
             <>
-              <button type="button" className="sm-go" onClick={takeTour}>
+              <button type="button" className="sm-go" data-tour="map" onClick={takeTour}>
                 Take the tour
               </button>
               {motion && (
@@ -512,7 +512,7 @@ export function SystemMap({ focus = null, onPick, compact = false, className = '
         {!compact && (
           <div className="sm-runs" role="group" aria-label="Play a recorded run on the map">
             {RUNS.map((r) => (
-              <button type="button" key={r.sample} aria-pressed={mode === 'follow' && feed?.title === runTitle(r) && !!feed?.id.startsWith('map-')} onClick={() => publish(recordedFeed(r))}>
+              <button type="button" key={r.sample} data-ex={r.sample} aria-pressed={mode === 'follow' && feed?.title === runTitle(r) && !!feed?.id.startsWith('map-')} onClick={() => publish(recordedFeed(r))}>
                 {runTitle(r)}
               </button>
             ))}
